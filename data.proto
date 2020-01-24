@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package data;
+
+service Command {
+    rpc Save (KeysRequest) returns (Noting) {}
+    rpc Load (Noting) returns (KeysRequest) {}
+    rpc Run (Noting) returns (Noting) {}
+    rpc Stop (Noting) returns (Noting) {}
+}
+
+message KeysRequest {
+    repeated Act acts = 1;
+}
+
+message Act {
+    double code = 1;
+    double state = 2;
+    double time = 3;
+    double duration = 4;
+}
+
+message Noting {
+    double status = 1;
+}
